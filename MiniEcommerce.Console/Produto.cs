@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace MiniEcommerce.Console
 {
@@ -23,6 +22,17 @@ namespace MiniEcommerce.Console
             Nome = nome;
             Preco = preco;
             QuantidadeEstoque = quantidadeEstoque;
+        }
+
+        public void DiminuirEstoque(int quantidade)
+        {
+            if (quantidade <= 0)
+                throw new ArgumentException("A quantidade deve ser maior que zero.");
+
+            if (quantidade > QuantidadeEstoque)
+                throw new InvalidOperationException("Estoque insuficiente.");
+
+            QuantidadeEstoque -= quantidade;
         }
     }
 }

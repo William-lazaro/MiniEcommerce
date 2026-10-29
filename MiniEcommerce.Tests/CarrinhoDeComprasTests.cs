@@ -1,44 +1,40 @@
-using System;
-using System.Collections.Generic;
+﻿using System;
+using Xunit;
+using MiniEcommerce.Console;
 
-namespace MiniEcommerce.Console
+namespace MiniEcommerce.Tests
 {
-    public class CarrinhoDeCompras
+    public class CarrinhoDeComprasTests
     {
-        private readonly List<(Produto Produto, int Quantidade)> itens = new();
-
-        public void AdicionarProduto(Produto produto, int quantidade)
+        [Fact]
+        public void AdicionarProduto_ComQuantidadeValida_DeveAdicionarAoCarrinho()
         {
-            if (produto == null)
-                throw new ArgumentException("O produto é obrigatório.");
+            var produto = new Produto("Mouse", 50m, 10);
+            var carrinho = new CarrinhoDeCompras();
 
-            if (quantidade <= 0)
-                throw new ArgumentException("A quantidade deve ser maior que zero.");
+            carrinho.AdicionarProduto(produto, 2);
 
-            int quantidadeNoCarrinho = 0;
-
-            foreach (var item in itens)
-            {
-                if (item.Produto == produto)
-                    quantidadeNoCarrinho += item.Quantidade;
-            }
-
-            if (quantidade + quantidadeNoCarrinho > produto.QuantidadeEstoque)
-                throw new ArgumentException("Estoque insuficiente.");
-
-            itens.Add((produto, quantidade));
+            Assert.Equal(100m, carrinho.CalcularSubtotal());
         }
 
-        public decimal CalcularSubtotal()
+        [Fact]
+        public void AdicionarProduto_ComQuantidadeMaiorQueEstoque_DeveLancarExcecao()
         {
-            decimal subtotal = 0;
+            var produto = new Produto("Teclado", 100m, 3);
+            var carrinho = new CarrinhoDeCompras();
 
-            foreach (var item in itens)
-            {
-                subtotal += item.Produto.Preco * item.Quantidade;
-            }
+            Assert.Throws<ArgumentException>(
+                () => carrinho.AdicionarProduto(produto, 4));
+        }
 
-            return subtotal;
+        [Fact]
+        public void AdicionarProduto_ComQuantidadeZero_DeveLancarExcecao()
+        {
+            var produto = new Produto("Monitor", 500m, 5);
+            var carrinho = new CarrinhoDeCompras();
+
+            Assert.Throws<ArgumentException>(
+                () => carrinho.AdicionarProduto(produto, 0));
         }
     }
 }
