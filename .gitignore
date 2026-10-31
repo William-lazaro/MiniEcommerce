@@ -1,0 +1,22 @@
+# Build
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Test results
+TestResults/
+*.coverage
+*.coveragexml
+
+# OS
+.DS_Store
+Thumbs.db
