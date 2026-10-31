@@ -186,14 +186,6 @@ Marcela Anataniel
 Nathaly Caroline 
 William Lázaro 
 
-Estudante de Análise e Desenvolvimento de Sistemas (ADS), interessado em desenvolvimento de software, banco de dados e qualidade de código.
 
-- "GitHub" (https://github.com/GabrielGobira)
-- "LinkedIn" (https://www.linkedin.com/in/gabriel-gobira-de-souza-506080251/)
-- "Repositório MiniEcommerce" (https://github.com/GabrielGobira/MiniEcommerce)
-
-Projeto original: "William-lazaro/MiniEcommerce" (https://github.com/William-lazaro/MiniEcommerce)
-
----
 
 ⭐ MiniEcommerce — Aprendizado prático em C#, .NET e qualidade de software.
