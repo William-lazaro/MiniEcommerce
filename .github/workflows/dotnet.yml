@@ -1,0 +1,28 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore MiniEcommerce.slnx
+
+      - name: Build
+        run: dotnet build MiniEcommerce.slnx --no-restore
+
+      - name: Run tests
+        run: dotnet test MiniEcommerce.slnx --no-build --verbosity normal
