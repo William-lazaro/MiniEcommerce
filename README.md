@@ -100,7 +100,7 @@ Para executar o projeto, é necessário ter instalado:
 
 Abra o terminal e execute:
 
-git clone https://github.com/GabrielGobira/MiniEcommerce.git
+git clone https://github.com/WilliamLazaro/MiniEcommerce.git
 
 2. Acessar a pasta do projeto
 
